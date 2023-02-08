@@ -1,0 +1,13 @@
+{% include '/main.html' %}
+
+<div class="add">
+    <h1 class="add-this">add a course</h1>
+    <p>fill in the information below</p>
+    <form action="/add_course" method="POST">
+        <div><input type="text" name="course_name" placeholder="course name"></div>
+        <div><input type="text" name="course_teacher" placeholder="course teacher"></div>
+        <div><input type="text" name="course_description" placeholder="course description"></div>
+        <div><input type="submit" name="submit"></div>
+    </form>
+</div>
+

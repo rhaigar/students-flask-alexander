@@ -1,0 +1,16 @@
+{% include '/main.html' %}
+
+<div class="container">
+        <h1 class="list">course list</h1>
+        <p>course name--teacher--description</p>
+        <form action="/course_list" method="get">
+<div class="">
+    {% for course in courses_list %}
+</div>
+<div class="container">
+    {{ course }}
+</div>
+{% endfor %}
+</div>
+</form>
+

@@ -1,0 +1,70 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: grid;
+}
+
+
+
+
+
+
+.sidenav {
+  height: 50%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 18%;
+  left: 0;
+  background-color: #f3f4f5;
+  overflow-x: hidden;
+  padding-top: 10px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+}
+
+.sidenav a:hover {
+  background-color: darkkhaki;
+}
+.header  h1{
+  padding: 30px;
+  text-align: center;
+  background: #f8f8f8;
+  color: #060707;
+  font-size: 35px;
+  
+}
+.container {
+  margin: auto;
+  padding: 20px;
+  border: 1px solid;
+  border-radius: 10px;
+  text-align: center;
+
+}
+.list_c {
+  margin: auto;
+  padding: 5px;
+  border: 1px solid;
+  border-radius: 1px;
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 20px;
+  text-size-adjust: 5px;
+}
+
+.add {
+  padding: 20px;
+  margin: auto;
+  border: 1px solid rgb(206, 15, 15);
+  border-radius: 10px;
+
+
+}
