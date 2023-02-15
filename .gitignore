@@ -1,1 +1,5 @@
 students.db
+__pycache__/setup_db.cpython-310.pyc
+__pycache__/app.cpython-310.pyc
+.vscode/launch.json
+test_db.py
