@@ -48,6 +48,13 @@ def create_tables():
         UNIQUE(student_id, course_id)
         )
     """)
+    execute_query("""
+        CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY,
+        username TEXT NOT NULL UNIQUE,
+        password TEXT NOT NULL UNIQUE
+        )
+    """)
 
 def create_fake_data(students_num=40, teachers_num=4):
     fake=faker.Faker()
@@ -61,3 +68,4 @@ def create_fake_data(students_num=40, teachers_num=4):
         execute_query(f"INSERT INTO courses (name, teacher_id) VALUES ('{course_name}', '{random.choice(teacher_ids)}')")
 
 
+create_tables()

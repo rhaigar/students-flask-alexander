@@ -7,9 +7,29 @@ import sqlite3
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def home_page():
     return render_template('main.html')
+
+
+@app.route("/new_user", methods=['POST', 'GET'])
+def new_user():
+    if request.method == 'POST':
+        with sqlite3.connect("students.db") as conn:
+            username = request.form["user_name"]
+            password = request.form["pass_word"]
+            cur = conn.cursor()
+            cur.execute(f"INSERT INTO users (username, password) VALUES ('{username}','{password}')")
+            return redirect(url_for('login'))
+    if request.method == 'GET':
+        return render_template('new_user.html')
+
+
+@app.route("/login", methods=['POST', 'GET'])
+def login():
+    if request.method == 'GET':
+        return render_template('login.html')
+
 
 
 @app.route("/course_list", methods=['GET'])
@@ -19,7 +39,7 @@ def course_list():
             cur = conn.cursor()
             cur.execute("SELECT * FROM courses_list")
             courses_list = cur.fetchall()
-    return render_template('course_list.html', courses_list=courses_list)
+            return render_template('course_list.html', courses_list=courses_list)
 
 
 @app.route('/register/<student_id>/<course_id>')

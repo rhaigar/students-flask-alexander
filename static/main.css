@@ -5,16 +5,10 @@ body, html {
   display: grid;
 }
 
-
-
-
-
-
 .sidenav {
   height: 50%;
   width: 160px;
   position: fixed;
-  z-index: 1;
   top: 18%;
   left: 0;
   background-color: #f3f4f5;
