@@ -1,10 +1,13 @@
-from flask import Flask, redirect, url_for, render_template, request
+from flask import Flask, redirect, url_for, render_template, request, flash, get_flashed_messages
 from setup_db import execute_query
 from sqlite3 import IntegrityError
 from collections import namedtuple
 import sqlite3
+from classes import Course, Teacher, Student, Grade, Attend
 
 app = Flask(__name__)
+app.secret_key = 'alex'
+
 
 
 @app.route("/", methods=['GET'])
@@ -86,6 +89,115 @@ def add_course():
         return "new course added"
     return render_template('course_list.html')
 
+@app.route('/attendance', methods=['GET', 'POST'])
+def page():
+    return render_template('attendance.html')
 
+
+@app.route('/python_attend',methods=['GET','POST'])
+def python():
+    if request.method == 'POST':
+        name = request.form['name']
+        attend = request.form['attendance']
+        execute_query(f"UPDATE students_attendance SET attendance='{attend}' WHERE student_id = (SELECT id FROM students WHERE name = '{name}') AND course_id=1")
+        python_attend = {}
+        students = execute_query("SELECT s.name, sa.attendance FROM students_attendance sa JOIN students s ON s.id = sa.student_id WHERE sa.course_id=1")
+        for student in students:
+            python_attend[student[0]] = student[1]
+        return render_template('python_attend.html', python_attend=python_attend)
+
+    if request.method == 'GET':
+        python_attend = {}
+        students = execute_query("SELECT s.name, sa.attendance FROM students_attendance sa JOIN students s ON s.id = sa.student_id WHERE sa.course_id=1")
+        for student in students:
+            name = student[0]
+            attend = student[1]
+            python_attend[name] = attend
+        return render_template('python_attend.html', python_attend=python_attend)
+
+@app.route('/java_attend',methods=['GET','POST'])
+def java():
+    if request.method == 'POST':
+        name = request.form['name']
+        attend = request.form['attendance']
+        execute_query(f"UPDATE students_attendance SET attendance='{attend}' WHERE student_id = (SELECT id FROM students WHERE name = '{name}') AND course_id=2")
+        java_attend = {}
+        students = execute_query("SELECT s.name, sa.attendance FROM students_attendance sa JOIN students s ON s.id = sa.student_id WHERE sa.course_id=2")
+        for student in students:
+            java_attend[student[0]] = student[1]
+        return render_template('java_attend.html', java_attend=java_attend)
+
+    if request.method == 'GET':
+        java_attend = {}
+        students = execute_query("SELECT s.name, sa.attendance FROM students_attendance sa JOIN students s ON s.id = sa.student_id WHERE sa.course_id=2")
+        for student in students:
+            name = student[0]
+            attend = student[1]
+            java_attend[name] = attend
+        return render_template('java_attend.html', java_attend=java_attend)
+
+@app.route('/html_attend',methods=['GET','POST'])
+def html():
+    if request.method == 'POST':
+        name = request.form['name']
+        attend = request.form['attendance']
+        execute_query(f"UPDATE students_attendance SET attendance='{attend}' WHERE student_id = (SELECT id FROM students WHERE name = '{name}') AND course_id=3")
+        html_attend = {}
+        students = execute_query("SELECT s.name, sa.attendance FROM students_attendance sa JOIN students s ON s.id = sa.student_id WHERE sa.course_id=3")
+        for student in students:
+            html_attend[student[0]] = student[1]
+        return render_template('html_attend.html', html_attend=html_attend)
+
+    if request.method == 'GET':
+        html_attend = {}
+        students = execute_query("SELECT s.name, sa.attendance FROM students_attendance sa JOIN students s ON s.id = sa.student_id WHERE sa.course_id=3")
+        for student in students:
+            name = student[0]
+            attend = student[1]
+            html_attend[name] = attend
+        return render_template('html_attend.html', html_attend=html_attend)
+    
+@app.route('/javascript_attend',methods=['GET','POST'])
+def javascript():
+    if request.method == 'POST':
+        name = request.form['name']
+        attend = request.form['attendance']
+        execute_query(f"UPDATE students_attendance SET attendance='{attend}' WHERE student_id = (SELECT id FROM students WHERE name = '{name}') AND course_id=5")
+        javascript_attend = {}
+        students = execute_query("SELECT s.name, sa.attendance FROM students_attendance sa JOIN students s ON s.id = sa.student_id WHERE sa.course_id=5")
+        for student in students:
+            javascript_attend[student[0]] = student[1]
+        return render_template('javascript_attend.html', javascript_attend=javascript_attend)
+
+    if request.method == 'GET':
+        javascript_attend = {}
+        students = execute_query("SELECT s.name, sa.attendance FROM students_attendance sa JOIN students s ON s.id = sa.student_id WHERE sa.course_id=5")
+        for student in students:
+            name = student[0]
+            attend = student[1]
+            javascript_attend[name] = attend
+        return render_template('javascript_attend.html', javascript_attend=javascript_attend)
+    
+@app.route('/css_attend',methods=['GET','POST'])
+def css():
+    if request.method == 'POST':
+        name = request.form['name']
+        attend = request.form['attendance']
+        execute_query(f"UPDATE students_attendance SET attendance='{attend}' WHERE student_id = (SELECT id FROM students WHERE name = '{name}') AND course_id=4")
+        css_attend = {}
+        students = execute_query("SELECT s.name, sa.attendance FROM students_attendance sa JOIN students s ON s.id = sa.student_id WHERE sa.course_id=4")
+        for student in students:
+            css_attend[student[0]] = student[1]
+        return render_template('css_attend.html', css_attend=css_attend)
+
+    if request.method == 'GET':
+        css_attend = {}
+        students = execute_query("SELECT s.name, sa.attendance FROM students_attendance sa JOIN students s ON s.id = sa.student_id WHERE sa.course_id=4")
+        for student in students:
+            name = student[0]
+            attend = student[1]
+            css_attend[name] = attend
+        return render_template('css_attend.html', css_attend=css_attend)
+    
 if __name__ == '__main__':
     app.run(debug=True)

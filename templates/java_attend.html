@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>java class</title>
+</head>
+<body>
+    <div class="navbar-main">
+        <a href="/attendance">attendance</a>
+    </div>
+    <h1>attendance for java course</h1>
+    {% for name, attend in java_attend.items() %}
+    <form action="/java_attend" method="POST">
+<label>
+        {{ name }}
+    </label>
+    <input type="hidden" name="name" value="{{ name }}">
+    <input type="radio" name="attendance" value="yes" {% if attend == "yes" %}checked{% endif %}>Yes
+    <input type="radio" name="attendance" value="no" {% if attend == "no" %}checked{% endif %}>No    
+    <button type="submit">Submit</button>
+</form>
+    {% endfor %}
+</body>
+</html>
