@@ -1,0 +1,15 @@
+.navbar-main {
+    display: grid;
+    text-align: center;
+    font-size: xx-large;
+    background-color: rgb(37, 139, 165);
+}
+
+.links a {
+    display: grid;
+    padding: 5px 5px;
+    font-size: larger;
+    background-color: rgb(181, 155, 206);
+    text-align: center;
+
+}

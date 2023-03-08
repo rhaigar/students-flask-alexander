@@ -1,0 +1,25 @@
+.navbar-main {
+    display: grid;
+    text-align: center;
+    font-size: xx-large;
+    background-color: rgb(37, 139, 165);
+}
+
+h1 {
+    display: grid;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.student, input, button {
+margin: 8px;
+padding: 0 10px;
+height: 30px;
+border-color: blue;
+font-size: x-large;
+}
+
+p {
+    font-size: x-large;
+    margin: 8px;
+}
