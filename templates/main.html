@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,16 +8,57 @@
     <title>home page</title>
     <link rel="stylesheet" href="/static/main.css">
     <header class="header">
-        <h1>home page</h1>
+        <h1>Home page</h1>
     </header>
 </head>
 <body>
-    <div class="sidenav">
-        <a href="/main">home page</a>
-        <a href="/new_user">registration page</a>
-        <a href="/add_course">add course</a>
-        <a href="/course_list">course list</a>
-        <a href="/login">login page</a>
-    </div>
+    <div class="session-block">
+        {% if session.logged_in %}
+        <h1>Welcome, {{ session['username'] }}</h1>
+    {% else %}
+        <h1>{{ welcome_guest }}</h1>
+    {% endif %}
+        </div>
+        
+        <div class="search-bar">
+            <form action="/search" method="get">
+              <div class="search-box">
+                <input type="text" name="q" placeholder="Search..." value="{{ search_query }}">
+                <button type="submit">Search</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="sidenav">
+            <a href="{{ url_for('main') }}">Home page</a>
+        
+            {% if session.logged_in and session.user_type == 'admin' %}
+            <a href="{{ url_for('add_course') }}">Add Course</a>
+            <a href="{{ url_for('list_students') }}">Student List</a>
+            <a href="./assign_student">assign student</a>
+            <a href="./assign_teacher">assign teacher</a>
+            <a href="{{ url_for('course_list') }}">Course List</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        
+            {% elif session.logged_in and session.user_type == 'teacher' %}
+            <a href="{{ url_for('list_students') }}">Student List</a>
+            <a href="{{ url_for('course_list') }}">Course List</a>
+            <a href="">my courses</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        
+            {% elif session.logged_in and session.user_type == 'student' %}
+            <a href="{{ url_for('list_students') }}">Student List</a>
+            <a href="{{ url_for('course_list') }}">Course List</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        
+            {% else %}
+            <a href="{{ url_for('course_list') }}">Course List</a>
+            <a href="{{ url_for('new_user') }}">Register</a>
+            <a href="{{ url_for('login') }}">Login Page</a>
+            {% endif %}
+        </div>
 </body>
 </html>
+<footer>
+    <p>holyshit this was hardwork p.s: please no fail T_T</p>
+</footer>

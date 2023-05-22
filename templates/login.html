@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <link rel="stylesheet" href="/static/login.css">
-    <h2>Welcome to my wip</h2>
-</head>
-<body>
-    <div class="container">
-        <div class="login_page">
+{% include '/main.html' %}
+{% block content %}
+
+    <div class="login">
             <h1>Login</h1>
-    <form action="login" method="post">
+        <form action="{{ url_for('login') }}" method="POST">
        <p><input type="text" name="username" placeholder="username"></p>
         <p><input type="text" name="password" placeholder="password"></p>
         <p class="submit"><input name="button" type="submit" value="login" placeholder="login"></p>
+        <p class="link">new user? click here <a href="{{ url_for('new_user') }}">register</a></p>
     </form>
 </div>
-</div>
-</body>
-</html>
+{% endblock %}

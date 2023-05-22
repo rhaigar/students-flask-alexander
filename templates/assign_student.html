@@ -1,0 +1,28 @@
+{% include '/main.html' %}
+{% block content %}
+<div class="assign_student">
+    <h1 class="add-this">assign a student to a course</h1>
+
+    <form action="/assign_student" method="post">
+        <label for="student_name">Select Student:</label>
+        <select name="student_name" id="student_select">
+            {% for student in students %}
+            <option value="{{ student[0] }}">{{ student[0] }}</option>
+            {% endfor %}
+        </select>
+    <br>
+        <label for="course_name">Select Course:</label>
+        <select name="course_name" id="course_select">
+            {% for course in courses %}
+            <option value="{{ course[0] }}">{{ course[0] }}</option>
+            {% endfor %}
+        </select>
+    
+        <input type="hidden" name="student_id" id="student_id">
+        <input type="hidden" name="course_id" id="course_id">
+    <br>
+        <button type="submit">Assign</button>
+    </form>
+</div>
+
+{% endblock %}

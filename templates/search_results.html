@@ -1,0 +1,39 @@
+{% include '/main.html' %}
+
+{% block content %}
+<div class="result-item">
+  <h6>Search Results for "{{ query }}"</h6>
+  <table class="result1">
+    <tr>
+      <th>Course Results</th>
+    </tr>
+    {% for course in course_results %}
+    <tr>
+      <td>{{ course[1] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <br>
+  <table class="result2">
+    <tr>
+      <th>Student Results</th>
+    </tr>
+    {% for student in student_results %}
+    <tr>
+      <td>{{ student[1] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <br>
+  <table class="result3">
+    <tr>
+      <th>Teacher Results</th>
+    </tr>
+    {% for teacher in teacher_results %}
+    <tr>
+      <td>{{ teacher[1] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

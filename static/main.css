@@ -5,13 +5,71 @@ body, html {
   display: grid;
 }
 
-.sidenav {
+.session-block {
   height: 50%;
-  width: 160px;
+  width: block;
   position: fixed;
-  top: 18%;
+  top: 9%;
   left: 0;
-  background-color: #f3f4f5;
+}
+
+.search-bar {
+  position: fixed;
+  width: 50px;
+  top: 80px;
+  right: 220px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+.search-box input[type="text"] {
+  flex-grow: 1;
+}
+
+.search-box button {
+  margin-left: 10px;
+}
+
+.result-item {
+  position: absolute;
+  top: 200px;
+  right: 200px;
+  left: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.result-item h6 {
+  padding: 12px;
+  border: 2px solid black;
+  font-size: larger;
+  font-style: italic;
+}
+.result1 th,
+.result2 th,
+.result3 th,
+.result1 td,
+.result2 td,
+.result3 td {
+  font-style: italic;
+  border: 2px solid #2d24af;
+  padding: 10px;
+  text-align: center;
+  font: bolder;
+  font-size: larger;
+}
+
+.sidenav {
+  height: 80%;
+  width: 150px;
+  position: fixed;
+  top: 150px;
+  left: 0;
+  background-color: #080808;
   overflow-x: hidden;
   padding-top: 10px;
 }
@@ -20,45 +78,190 @@ body, html {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: black;
   display: block;
+  margin-bottom: 10px;
+  color: gold;
 }
 
 .sidenav a:hover {
-  background-color: darkkhaki;
+  background-color: rgb(252, 252, 252);
 }
-.header  h1{
-  padding: 30px;
-  text-align: center;
-  background: #f8f8f8;
-  color: #060707;
-  font-size: 35px;
-  
-}
-.container {
-  margin: auto;
+
+.header h1 {
+  top: 0;
+  left: 0;
+  right: 0;
   padding: 20px;
-  border: 1px solid;
-  border-radius: 10px;
   text-align: center;
+  background-color: #080808;
+  color: gold;
+  font-size: 35px;
+}
+
+.center-list {
+  position: relative;
+  top: -250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  right: -350px;
+}
+
+
+.course-table {
+  border-collapse: collapse;
 
 }
-.list_c {
-  margin: auto;
-  padding: 5px;
-  border: 1px solid;
-  border-radius: 1px;
+
+.course-table th,
+.course-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
   text-align: center;
-  padding-left: 50px;
-  padding-right: 20px;
-  text-size-adjust: 5px;
+  font-size: larger;
+}
+
+.course-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.course-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.center-list h6 {
+  width: block;
+  font-size: 35px;
+  top: 170px;
+}
+
+.new_user,
+.login,
+.add,
+.profile,
+.edit-profile {
+  margin: auto;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  position: fixed;
+}
+
+.new_user {
+  width: block;
+  position: fixed;
+  font-size: 35px;
+  top: 170px;
+  right: 650px;
+}
+.assign_student{
+  width: block;
+  position: fixed;
+  font-size: 35px;
+  top: 170px;
+  right: 650px;
+}
+.assign_teacher{
+  width: block;
+  position: fixed;
+  font-size: 35px;
+  top: 170px;
+  right: 650px;
+}
+
+.login {
+  width: block;
+  position: fixed;
+  font-size: 35px;
+  top: 170px;
+  right: 650px;
 }
 
 .add {
-  padding: 20px;
+  width: block;
+  position: fixed;
+  font-size: 35px;
+  top: 170px;
+  right: 650px;
+}
+
+.profile {
+  width: block;
+  position: fixed;
+  font-size: 35px;
+  top: 170px;
+  right: 650px;
+}
+
+.edit-profile {
+  width: block;
+  position: fixed;
+  font-size: 35px;
+  top: 170px;
+  right: 650px;
+}
+
+.students-table {
+  border-collapse: collapse;
   margin: auto;
-  border: 1px solid rgb(206, 15, 15);
-  border-radius: 10px;
+  width: 80%;
+}
 
+.students-table th,
+.students-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
 
+.students-table th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bolder;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: larger;
+}
+
+.students-table a {
+  margin-right: 6px;
+}
+
+.students-list {
+  text-align: center;
+}
+
+.profile-table th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bolder;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: larger;
+}
+
+.profile-table td,
+.profile-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+footer {
+  position: absolute;
+  background-color: #080808;
+  text-align: center;
+  font-style: italic;
+  color: gold;
+  font-size: 14px;
+  align-self: flex-end;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  width: 100%;
 }

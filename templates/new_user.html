@@ -1,24 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/new_user.css">
-    <title>registration form</title>
-    <h2>Registration page</h2>
-</head>
-<body>
-    <div class="container">
-        <div class="new_user">
-            <h1>please provide a username and a password</h1>
+{% include '/main.html' %}
+
+{% block content %}
+<div class="new_user">
+    <h1>Register here!</h1>
     <form action="new_user" method="POST">
-      <div> <p><input type="text" name="user_name" placeholder="username"></p></div>
-      <div>  <p><input type="text" name="pass_word" placeholder="password"></p></div> 
-        <div><p class="submit"><input name="button" type="submit"></p></div>
+        <p><input type="text" name="user_name" placeholder="username"></p>
+        <p><input type="text" name="pass_word" placeholder="password"></p> 
+        <p>
+            user types: 
+            <select name="user_type">
+                {% for type in types %}
+                <option value="{{ type[0] }}">{{ type[0] }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p class="submit"><input name="button" type="submit"></p>
     </form>
 </div>
-</div>
-    
-</body>
-</html>
+{% endblock %}

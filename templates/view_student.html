@@ -1,0 +1,28 @@
+{% include '/main.html' %}
+{% block content %}
+<body>
+    <div class="profile">
+        {% for student in students %}
+        Name <h1>{{ student.name }}</h1>
+        Email <h2>{{ student.email }}</h2>
+        phone number <h3>{{ student.phone }}</h3>
+        {% endfor %}
+        <form action="/students/<student_id>/view_student" method="post">
+            <div class="profile-table">
+        <table>
+            <tr>
+                <th>my-courses</th>
+                <th>my-grades</th>
+            </tr>
+            {% for course in courses %}
+           <tr>
+            <td>{{ course.name }}</td>
+            <td>{{ course.grade }}</td>
+        </tr>
+           {% endfor %} 
+    </table>
+</div>
+        </form>
+    </div>
+</body>
+{% endblock %}

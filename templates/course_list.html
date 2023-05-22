@@ -1,16 +1,22 @@
 {% include '/main.html' %}
 
-<div class="container">
-        <h1 class="list">course list</h1>
-        <p>course name--teacher--description</p>
-        <form action="/course_list" method="get">
-<div class="">
-    {% for course in courses_list %}
+{% block content %}
+<div class="center-list">
+    <h6>Course List</h6>
+    <form action="/course_list" method="get">
+        <table class="course-table">
+            <tr>
+                <th>Course Name</th>
+                <th>Course Description</th>
+            </tr>
+            {% for course in courses %}
+            <tr>
+                <td>{{ course.name }}</td>
+                <td>{{ course.description }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
 </div>
-<div class="container">
-    {{ course }}
-</div>
-{% endfor %}
-</div>
-</form>
+{% endblock %}
 
