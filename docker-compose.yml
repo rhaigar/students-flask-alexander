@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  studentsflaskalexander:
+    image: studentsflaskalexander
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 5002:5002
